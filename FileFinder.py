@@ -9,7 +9,7 @@ allFiles = {}
 intervalCounter = 0
 
 # Configuration constants
-rawMainPath = "I:/"
+rawMainPath = "/"
 mainPath = pl.Path(rawMainPath)
 
 openTextMarker = "\033[93m"
@@ -28,9 +28,9 @@ if orderBySize == True:
 else:
     orderValue = None
 
-lineRange = 30
+lineRange = 10
 interval = 0
-minFileSize = 1024 * 1024 * 100
+minFileSize = 1024 * 1024 * 10
 maxFilesize = 10 ** 15
 
 sizeNames = ["B", "KB", "MB", "GB", "TB"]
