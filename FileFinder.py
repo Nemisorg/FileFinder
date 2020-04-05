@@ -35,6 +35,14 @@ maxFilesize = 10 ** 15
 
 sizeNames = ["B", "KB", "MB", "GB", "TB"]
 
+dirsToIgnore = [] # Directories must start with / for example: ["/AppData"]
+
+tempDirsToIgnore = []
+for directory in dirsToIgnore:
+    tempDirsToIgnore.append(f"{mainPath}{pl.Path(directory)}")
+
+dirsToIgnore = tempDirsToIgnore
+
 
 # Task functions
 def waitKey():
@@ -118,7 +126,14 @@ def crawl(path):
     addFiles(filesInPath)
 
     for directory in directoriesInPath:
-        crawl(directory)
+        ignoreDirectory = False
+
+        for item in dirsToIgnore:
+            if item == directory:
+                ignoreDirectory = True
+        
+        if ignoreDirectory == False:
+            crawl(directory)
 
 def printCurrentRange(minShowedResult, maxShowedResult, rmList, currentSelection):
     clear()
